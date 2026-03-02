@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,12 +68,15 @@
         </div>
 
         <!-- RIGHT: Results -->
-        <div class="calc-results card" id="resultsCard">
+        <div class="calc-results card">
+          <!-- Default placeholder state -->
           <div class="results-placeholder" id="resultsPlaceholder">
             <span class="placeholder-icon">&#127860;</span>
             <p>Enter your details and click <strong>Calculate</strong> to see your loan breakdown.</p>
           </div>
-          <div class="results-content hidden" id="resultsContent">
+
+          <!-- Results state (hidden until calculation) -->
+          <div class="results-content" id="resultsContent" style="display:none;">
             <div class="result-main">
               <span class="result-label">Monthly Payment</span>
               <span class="result-amount" id="resMonthly">AED 0</span>
@@ -110,12 +112,116 @@
   <!-- SECTION 2: CONTENT -->
   <section id="content-section">
     <div class="section-inner">
+
       <h2>How Car Loans Work</h2>
-      <!-- Content will be injected later -->
-      <div class="content-placeholder"></div>
-      <h2>Eligibility &amp; Required Documents in UAE</h2>
-      <!-- Content will be injected later -->
-      <div class="content-placeholder"></div>
+      <div class="content-block">
+        <p class="content-intro">
+          A car loan lets you buy a vehicle now and pay for it in monthly instalments over time — instead of paying the full amount upfront.
+        </p>
+        <p class="content-intro">
+          When you apply for a loan, the bank or lender looks at a few key factors to calculate your monthly payment:
+        </p>
+        <ul class="content-list">
+          <li><strong>Car price</strong> — the total cost of the vehicle you want to buy</li>
+          <li><strong>Down payment</strong> — the amount you pay upfront; the more you put down, the less you borrow</li>
+          <li><strong>Interest rate</strong> — the cost of borrowing money, shown as a yearly percentage</li>
+          <li><strong>Loan tenure</strong> — how long you take to repay the loan (usually 1–5 years)</li>
+        </ul>
+        <p class="content-note">
+          A higher down payment or shorter tenure means lower total interest. A longer tenure means smaller monthly payments, but you pay more overall.
+        </p>
+      </div>
+
+      <h2>Eligibility Criteria</h2>
+      <div class="table-wrapper">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Requirement</th>
+              <th>Typical Expectation</th>
+              <th>Why It Matters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Minimum Age</strong></td>
+              <td>21 years or older</td>
+              <td>Lenders require borrowers to be financially and legally responsible</td>
+            </tr>
+            <tr>
+              <td><strong>Minimum Salary</strong></td>
+              <td>AED 5,000/month for new cars; AED 3,000/month for used cars</td>
+              <td>Ensures you can comfortably cover monthly repayments</td>
+            </tr>
+            <tr>
+              <td><strong>Credit History</strong></td>
+              <td>Good credit score preferred</td>
+              <td>A clean repayment record improves your chances of approval and better rates</td>
+            </tr>
+            <tr>
+              <td><strong>Employment Stability</strong></td>
+              <td>Steady employment or verifiable business income</td>
+              <td>Shows lenders you have a reliable source of income</td>
+            </tr>
+            <tr>
+              <td><strong>Existing Financial Commitments</strong></td>
+              <td>Total debts should not exceed 50% of your monthly salary</td>
+              <td>Lenders check you're not over-borrowed before approving more credit</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Required Documents for Car Loans in UAE</h2>
+      <div class="table-wrapper">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Document</th>
+              <th>Who Needs It</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Emirates ID</strong></td>
+              <td>All applicants</td>
+              <td>Primary identity verification required by all UAE lenders</td>
+            </tr>
+            <tr>
+              <td><strong>Passport &amp; Residence Visa</strong></td>
+              <td>Expatriate applicants</td>
+              <td>Confirms your legal residency status in the UAE</td>
+            </tr>
+            <tr>
+              <td><strong>Salary Certificate or Proof of Income</strong></td>
+              <td>Employed &amp; self-employed applicants</td>
+              <td>Verifies your monthly income to assess repayment ability</td>
+            </tr>
+            <tr>
+              <td><strong>Bank Statements (3–6 months)</strong></td>
+              <td>All applicants</td>
+              <td>Shows your spending habits and confirms regular income deposits</td>
+            </tr>
+            <tr>
+              <td><strong>UAE Driving License</strong></td>
+              <td>All applicants</td>
+              <td>Confirms you are legally permitted to drive the vehicle</td>
+            </tr>
+            <tr>
+              <td><strong>Trade License</strong></td>
+              <td>Self-employed applicants</td>
+              <td>Validates your business as a legitimate source of income</td>
+            </tr>
+            <tr>
+              <td><strong>Address Proof</strong></td>
+              <td>Expatriate applicants</td>
+              <td>Confirms your place of residence within the UAE</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
     </div>
   </section>
 
