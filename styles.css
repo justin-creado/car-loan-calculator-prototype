@@ -2,24 +2,24 @@
 
 /* === 1. CSS Variables & Reset === */
 :root {
-  --primary: #2853a2;
+  --primary:      #2853a2;
   --primary-dark: #1e3f7a;
-  --accent: #75c044;
-  --accent-dark: #5ea033;
-  --bg: #f5f7fa;
-  --surface: #ffffff;
-  --text: #1a1a2e;
-  --muted: #6b7280;
-  --border: #e5e7eb;
-  --error: #dc2626;
-  --amber: #d97706;
-  --green: #16a34a;
-  --red: #dc2626;
-  --radius-card: 12px;
-  --radius-btn: 8px;
+  --accent:       #75c044;
+  --accent-dark:  #5ea033;
+  --bg:           #f5f7fa;
+  --surface:      #ffffff;
+  --text:         #1a1a2e;
+  --muted:        #6b7280;
+  --border:       #e5e7eb;
+  --error:        #dc2626;
+  --amber:        #d97706;
+  --green:        #16a34a;
+  --red:          #dc2626;
+  --radius-card:  12px;
+  --radius-btn:   8px;
   --radius-input: 8px;
-  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.08);
-  --font: 'Segoe UI', Arial, sans-serif;
+  --shadow-card:  0 2px 12px rgba(0, 0, 0, 0.08);
+  --font:         'Segoe UI', Arial, sans-serif;
 }
 
 *, *::before, *::after {
@@ -28,9 +28,7 @@
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font);
@@ -48,7 +46,15 @@ h1, h2, h3 {
 }
 
 h1 { font-size: 1.75rem; }
-h2 { font-size: 1.35rem; margin-bottom: 1.25rem; }
+
+h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  color: var(--primary);
+}
+
+h2:first-child { margin-top: 0; }
 
 p { color: var(--muted); }
 
@@ -118,9 +124,7 @@ label {
   transition: border-color 0.2s;
 }
 
-.search-input:focus {
-  border-color: var(--primary);
-}
+.search-input:focus { border-color: var(--primary); }
 
 .btn-add-listing {
   background: var(--accent);
@@ -137,9 +141,7 @@ label {
   transition: background 0.2s;
 }
 
-.btn-add-listing:hover {
-  background: var(--accent-dark);
-}
+.btn-add-listing:hover { background: var(--accent-dark); }
 
 /* === 4. Calculator Section === */
 #calculator-section {
@@ -170,9 +172,7 @@ label {
   padding: 1.75rem;
 }
 
-.field-group {
-  margin-bottom: 1.1rem;
-}
+.field-group { margin-bottom: 1.1rem; }
 
 .field-group input,
 .field-group select {
@@ -221,24 +221,13 @@ label {
   transition: background 0.2s, transform 0.1s;
 }
 
-.btn-primary:hover {
-  background: var(--primary-dark);
-}
-
-.btn-primary:active {
-  transform: scale(0.98);
-}
-
-.btn-full {
-  width: 100%;
-  margin-top: 0.5rem;
-}
+.btn-primary:hover  { background: var(--primary-dark); }
+.btn-primary:active { transform: scale(0.98); }
+.btn-full           { width: 100%; margin-top: 0.5rem; }
 
 /* === 5. Results Card === */
 .calc-results {
   min-height: 320px;
-  display: flex;
-  align-items: stretch;
 }
 
 .results-placeholder {
@@ -248,13 +237,13 @@ label {
   justify-content: center;
   text-align: center;
   gap: 0.75rem;
-  width: 100%;
   padding: 2rem;
+  min-height: 260px;
 }
 
 .placeholder-icon {
   font-size: 2.5rem;
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
 .results-placeholder p {
@@ -262,6 +251,7 @@ label {
   color: var(--muted);
 }
 
+/* results-content visibility is controlled via inline style in JS */
 .results-content {
   width: 100%;
 }
@@ -274,11 +264,11 @@ label {
 }
 
 .result-label {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--muted);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
 }
 
 .result-amount {
@@ -297,7 +287,7 @@ label {
 .result-rows {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.65rem;
   margin-bottom: 1.25rem;
 }
 
@@ -308,24 +298,15 @@ label {
   font-size: 0.9rem;
 }
 
-.result-row span:first-child {
-  color: var(--muted);
-}
-
-.result-row span:last-child {
-  font-weight: 600;
-  color: var(--text);
-}
+.result-row span:first-child { color: var(--muted); }
+.result-row span:last-child  { font-weight: 600; color: var(--text); }
 
 .disclaimer {
   font-size: 0.75rem;
   color: var(--muted);
   margin-top: 1rem;
   font-style: italic;
-}
-
-.hidden {
-  display: none !important;
+  line-height: 1.5;
 }
 
 /* === 6. Content Section === */
@@ -336,15 +317,105 @@ label {
   border-bottom: 1px solid var(--border);
 }
 
-.content-placeholder {
-  height: 120px;
-  border-radius: 8px;
-  background: var(--bg);
+.content-block {
   margin-bottom: 2rem;
-  border: 1.5px dashed var(--border);
 }
 
-/* === 7. Car Listings Grid === */
+.content-intro {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 0.85rem;
+  line-height: 1.7;
+}
+
+.content-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.content-list li {
+  padding: 0.6rem 0.85rem 0.6rem 1rem;
+  background: var(--bg);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.content-list li strong { color: var(--primary); }
+
+.content-note {
+  font-size: 0.9rem;
+  color: var(--muted);
+  background: rgba(40, 83, 162, 0.05);
+  border: 1px solid rgba(40, 83, 162, 0.15);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  line-height: 1.6;
+}
+
+/* === 7. Tables === */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 2rem;
+}
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  font-size: 0.9rem;
+}
+
+.info-table thead tr {
+  background: var(--primary);
+  color: #fff;
+}
+
+.info-table thead th {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.info-table thead th:first-child { border-radius: var(--radius-card) 0 0 0; }
+.info-table thead th:last-child  { border-radius: 0 var(--radius-card) 0 0; }
+
+.info-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+
+.info-table tbody tr:last-child { border-bottom: none; }
+
+.info-table tbody tr:nth-child(even) { background: var(--bg); }
+
+.info-table tbody tr:hover { background: rgba(40, 83, 162, 0.04); }
+
+.info-table tbody td {
+  padding: 0.85rem 1rem;
+  color: var(--muted);
+  line-height: 1.55;
+  vertical-align: top;
+}
+
+.info-table tbody td:first-child {
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.info-table tbody td strong { color: var(--text); }
+
+/* === 8. Car Listings Grid === */
 #listings-section {
   padding: 2.5rem 1.5rem;
 }
@@ -430,7 +501,7 @@ label {
   color: #fff;
 }
 
-/* === 8. Footer === */
+/* === 9. Footer === */
 .site-footer {
   border-top: 3px solid var(--primary);
   padding: 1.5rem;
@@ -442,7 +513,7 @@ label {
   color: var(--muted);
 }
 
-/* === 9. Utilities & Badges === */
+/* === 10. Utilities & Badges === */
 .afford-badge {
   display: inline-flex;
   align-items: center;
@@ -451,6 +522,7 @@ label {
   border-radius: 20px;
   font-size: 0.875rem;
   font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 
 .afford-badge.affordable {
@@ -471,7 +543,7 @@ label {
   border: 1px solid rgba(220, 38, 38, 0.3);
 }
 
-/* === 10. Responsive Breakpoints === */
+/* === 11. Responsive Breakpoints === */
 @media (max-width: 992px) {
   .listings-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -483,9 +555,7 @@ label {
     grid-template-columns: 1fr;
   }
 
-  .calc-results {
-    min-height: unset;
-  }
+  .calc-results { min-height: unset; }
 
   .header-inner {
     flex-wrap: wrap;
@@ -500,8 +570,13 @@ label {
   }
 
   .logo { font-size: 1.25rem; }
+  h1    { font-size: 1.4rem; }
 
-  h1 { font-size: 1.4rem; }
+  .info-table thead th,
+  .info-table tbody td {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.85rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -520,11 +595,9 @@ label {
     padding: 1.75rem 1rem;
   }
 
-  .card {
-    padding: 1.25rem;
-  }
+  .card { padding: 1.25rem; }
 
-  .result-amount {
-    font-size: 1.6rem;
-  }
+  .result-amount { font-size: 1.6rem; }
+
+  .info-table tbody td:first-child { white-space: normal; }
 }
