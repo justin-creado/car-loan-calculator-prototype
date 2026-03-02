@@ -1,134 +1,137 @@
+<!-- index.html -->
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Car Loan Calculator – OpenSooq UAE</title>
-  <meta name="description"
-    content="Calculate your car loan EMI, total payment, and interest. Explore matching cars in the UAE marketplace. Currency: AED." />
+  <title>Car Loan Calculator | OpenSooq</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
-  <!-- Header -->
+  <!-- HEADER -->
   <header class="site-header">
-    <div class="container header-inner">
-      <div class="logo">Open<span>Sooq</span></div>
-      <nav class="header-nav">
-        <a href="#">Cars</a>
-        <a href="#">Financing</a>
-        <a href="#">Help</a>
-      </nav>
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-open">open</span><span class="logo-sooq">sooq</span>
+      </div>
+      <div class="search-wrap">
+        <span class="search-icon">&#128269;</span>
+        <input type="text" class="search-input" placeholder="Search cars, properties, jobs..." />
+      </div>
+      <button class="btn-add-listing">+ Add Listing</button>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <h1>Car Loan Calculator</h1>
-      <p class="hero-sub">Find out your monthly installment and explore cars that fit your budget&nbsp;—
-        UAE&nbsp;market,&nbsp;AED.</p>
-    </div>
-  </section>
+  <!-- SECTION 1: CALCULATOR -->
+  <section id="calculator-section">
+    <div class="section-inner">
+      <h1 class="calc-heading">Car Loan Calculator</h1>
+      <div class="calc-grid">
 
-  <!-- Calculator -->
-  <section class="calculator-section">
-    <div class="container">
-      <div class="calc-card">
-        <h2>Loan Details</h2>
-        <form id="loanForm" autocomplete="off">
-          <div class="form-grid">
-
-            <div class="field">
-              <label for="carPrice">Car Price (AED)</label>
-              <input type="text" id="carPrice" placeholder="e.g. 120,000" inputmode="numeric" />
-            </div>
-
-            <div class="field">
-              <label for="downPayment">Down Payment (AED)</label>
-              <input type="text" id="downPayment" placeholder="e.g. 24,000" inputmode="numeric" />
-            </div>
-
-            <div class="field">
-              <label for="interestRate">Interest Rate (%)</label>
-              <input type="text" id="interestRate" placeholder="e.g. 3.5" inputmode="decimal" />
-            </div>
-
-            <div class="field">
-              <label for="loanTenure">Loan Tenure (Years)</label>
-              <input type="text" id="loanTenure" placeholder="e.g. 5" inputmode="numeric" />
-            </div>
-
+        <!-- LEFT: Inputs -->
+        <div class="calc-inputs card">
+          <div class="field-group">
+            <label for="carPrice">Car Price (AED)</label>
+            <input type="number" id="carPrice" min="0" placeholder="e.g. 89000" />
+            <span class="field-error" id="err-carPrice"></span>
           </div>
-
-          <button type="submit" class="btn-calculate" id="calculateBtn">Calculate</button>
-        </form>
-
-        <!-- Results -->
-        <div class="results-panel" id="resultsPanel">
-          <div class="result-item accent">
-            <span class="result-label">Monthly Installment</span>
-            <span class="result-value" id="emiValue">—</span>
+          <div class="field-group">
+            <label for="downPayment">Down Payment (AED)</label>
+            <input type="number" id="downPayment" min="0" placeholder="e.g. 20000" />
+            <span class="field-error" id="err-downPayment"></span>
           </div>
-          <div class="result-item">
-            <span class="result-label">Total Payment</span>
-            <span class="result-value" id="totalPayment">—</span>
+          <div class="field-group">
+            <label for="interestRate">Interest Rate (%)</label>
+            <input type="number" id="interestRate" min="0" max="30" step="0.1" placeholder="e.g. 3.5" />
+            <span class="field-error" id="err-interestRate"></span>
           </div>
-          <div class="result-item">
-            <span class="result-label">Total Interest</span>
-            <span class="result-value" id="totalInterest">—</span>
+          <div class="field-group">
+            <label for="loanTenure">Loan Tenure</label>
+            <select id="loanTenure">
+              <option value="">Select tenure</option>
+              <option value="1">1 Year</option>
+              <option value="2">2 Years</option>
+              <option value="3">3 Years</option>
+              <option value="4">4 Years</option>
+              <option value="5">5 Years</option>
+              <option value="6">6 Years</option>
+              <option value="7">7 Years</option>
+            </select>
+            <span class="field-error" id="err-loanTenure"></span>
+          </div>
+          <div class="field-group">
+            <label for="monthlyIncome">Monthly Income (AED)</label>
+            <input type="number" id="monthlyIncome" min="0" placeholder="e.g. 15000" />
+            <span class="field-error" id="err-monthlyIncome"></span>
+          </div>
+          <button id="calcBtn" class="btn-primary btn-full">Calculate</button>
+        </div>
+
+        <!-- RIGHT: Results -->
+        <div class="calc-results card" id="resultsCard">
+          <div class="results-placeholder" id="resultsPlaceholder">
+            <span class="placeholder-icon">&#127860;</span>
+            <p>Enter your details and click <strong>Calculate</strong> to see your loan breakdown.</p>
+          </div>
+          <div class="results-content hidden" id="resultsContent">
+            <div class="result-main">
+              <span class="result-label">Monthly Payment</span>
+              <span class="result-amount" id="resMonthly">AED 0</span>
+            </div>
+            <div class="result-divider"></div>
+            <div class="result-rows">
+              <div class="result-row">
+                <span>Loan Amount</span>
+                <span id="resLoanAmount">AED 0</span>
+              </div>
+              <div class="result-row">
+                <span>Total Interest</span>
+                <span id="resTotalInterest">AED 0</span>
+              </div>
+              <div class="result-row">
+                <span>Total Cost</span>
+                <span id="resTotalCost">AED 0</span>
+              </div>
+              <div class="result-row">
+                <span>Salary Used</span>
+                <span id="resSalaryPct">0%</span>
+              </div>
+            </div>
+            <div id="affordBadge" class="afford-badge"></div>
+            <p class="disclaimer">Calculations are estimates only and may vary based on lender terms and conditions.</p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Car Recommendations -->
-  <section class="cars-section" id="carsSection">
-    <div class="container">
-      <h2 class="section-title">Cars That Fit Your Budget</h2>
-      <p class="section-sub">Based on your estimated installment, here are some options from the marketplace.</p>
-
-      <div class="cars-grid" id="carsGrid">
-        <!-- Cards injected by JS -->
-      </div>
+  <!-- SECTION 2: CONTENT -->
+  <section id="content-section">
+    <div class="section-inner">
+      <h2>How Car Loans Work</h2>
+      <!-- Content will be injected later -->
+      <div class="content-placeholder"></div>
+      <h2>Eligibility &amp; Required Documents in UAE</h2>
+      <!-- Content will be injected later -->
+      <div class="content-placeholder"></div>
     </div>
   </section>
 
-  <!-- How-It-Works -->
-  <section class="how-section">
-    <div class="container">
-      <h2 class="section-title">How It Works</h2>
-      <div class="steps-row">
-        <div class="step-card">
-          <div class="step-icon">1</div>
-          <h3>Enter Loan Details</h3>
-          <p>Provide car price, down&nbsp;payment, interest&nbsp;rate, and tenure.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-icon">2</div>
-          <h3>Get Instant Estimate</h3>
-          <p>See your monthly installment, total payment, and total interest instantly.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-icon">3</div>
-          <h3>Browse Matching Cars</h3>
-          <p>Explore cars that match your affordability right on&nbsp;OpenSooq.</p>
-        </div>
-      </div>
+  <!-- SECTION 3: CAR LISTINGS -->
+  <section id="listings-section">
+    <div class="section-inner">
+      <h2>Cars Available on Loan</h2>
+      <div class="listings-grid" id="listingsGrid"></div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; 2026 OpenSooq &mdash; Car Loan Calculator Demo (UAE)</p>
-    </div>
+    <p>&copy; 2024 OpenSooq. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
 </body>
-
 </html>
