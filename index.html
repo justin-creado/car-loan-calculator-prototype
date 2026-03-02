@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Car Loan Calculator – OpenSooq UAE</title>
+  <meta name="description"
+    content="Calculate your car loan EMI, total payment, and interest. Explore matching cars in the UAE marketplace. Currency: AED." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">Open<span>Sooq</span></div>
+      <nav class="header-nav">
+        <a href="#">Cars</a>
+        <a href="#">Financing</a>
+        <a href="#">Help</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Car Loan Calculator</h1>
+      <p class="hero-sub">Find out your monthly installment and explore cars that fit your budget&nbsp;—
+        UAE&nbsp;market,&nbsp;AED.</p>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section class="calculator-section">
+    <div class="container">
+      <div class="calc-card">
+        <h2>Loan Details</h2>
+        <form id="loanForm" autocomplete="off">
+          <div class="form-grid">
+
+            <div class="field">
+              <label for="carPrice">Car Price (AED)</label>
+              <input type="text" id="carPrice" placeholder="e.g. 120,000" inputmode="numeric" />
+            </div>
+
+            <div class="field">
+              <label for="downPayment">Down Payment (AED)</label>
+              <input type="text" id="downPayment" placeholder="e.g. 24,000" inputmode="numeric" />
+            </div>
+
+            <div class="field">
+              <label for="interestRate">Interest Rate (%)</label>
+              <input type="text" id="interestRate" placeholder="e.g. 3.5" inputmode="decimal" />
+            </div>
+
+            <div class="field">
+              <label for="loanTenure">Loan Tenure (Years)</label>
+              <input type="text" id="loanTenure" placeholder="e.g. 5" inputmode="numeric" />
+            </div>
+
+          </div>
+
+          <button type="submit" class="btn-calculate" id="calculateBtn">Calculate</button>
+        </form>
+
+        <!-- Results -->
+        <div class="results-panel" id="resultsPanel">
+          <div class="result-item accent">
+            <span class="result-label">Monthly Installment</span>
+            <span class="result-value" id="emiValue">—</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Total Payment</span>
+            <span class="result-value" id="totalPayment">—</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Total Interest</span>
+            <span class="result-value" id="totalInterest">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Car Recommendations -->
+  <section class="cars-section" id="carsSection">
+    <div class="container">
+      <h2 class="section-title">Cars That Fit Your Budget</h2>
+      <p class="section-sub">Based on your estimated installment, here are some options from the marketplace.</p>
+
+      <div class="cars-grid" id="carsGrid">
+        <!-- Cards injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- How-It-Works -->
+  <section class="how-section">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <div class="steps-row">
+        <div class="step-card">
+          <div class="step-icon">1</div>
+          <h3>Enter Loan Details</h3>
+          <p>Provide car price, down&nbsp;payment, interest&nbsp;rate, and tenure.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">2</div>
+          <h3>Get Instant Estimate</h3>
+          <p>See your monthly installment, total payment, and total interest instantly.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">3</div>
+          <h3>Browse Matching Cars</h3>
+          <p>Explore cars that match your affordability right on&nbsp;OpenSooq.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 OpenSooq &mdash; Car Loan Calculator Demo (UAE)</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

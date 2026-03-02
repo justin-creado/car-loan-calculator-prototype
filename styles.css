@@ -1,0 +1,438 @@
+/* ========================================================
+   OpenSooq Car Loan Calculator – Styles
+   ======================================================== */
+
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --clr-primary: #00b0a8;
+  --clr-primary-dark: #009089;
+  --clr-primary-light: #e0f7f5;
+  --clr-accent: #ff6f3c;
+  --clr-bg: #f5f7fa;
+  --clr-white: #ffffff;
+  --clr-text: #2c3e50;
+  --clr-text-light: #6b7c93;
+  --clr-border: #e2e8f0;
+  --clr-shadow: rgba(0, 0, 0, 0.06);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --transition: 0.25s ease;
+  --max-width: 1080px;
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: 92%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  background: var(--clr-white);
+  border-bottom: 1px solid var(--clr-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--clr-text);
+  letter-spacing: -0.5px;
+}
+
+.logo span {
+  color: var(--clr-primary);
+}
+
+.header-nav {
+  display: flex;
+  gap: 22px;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: var(--clr-text-light);
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.header-nav a:hover {
+  color: var(--clr-primary);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--clr-primary) 0%, #007e78 100%);
+  color: var(--clr-white);
+  padding: 52px 0 48px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  opacity: 0.9;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* ---------- Calculator ---------- */
+.calculator-section {
+  padding: 48px 0 32px;
+}
+
+.calc-card {
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 24px var(--clr-shadow);
+  padding: 36px 32px 32px;
+}
+
+.calc-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 24px;
+  color: var(--clr-text);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--clr-text-light);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.field input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  color: var(--clr-text);
+  background: var(--clr-bg);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+.field input::placeholder {
+  color: #b0bec5;
+}
+
+.field input:focus {
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 3px rgba(0, 176, 168, 0.15);
+}
+
+.field.error input {
+  border-color: #e74c3c;
+}
+
+.btn-calculate {
+  display: block;
+  width: 100%;
+  margin-top: 28px;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--clr-primary) 0%, #009089 100%);
+  color: var(--clr-white);
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.btn-calculate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 176, 168, 0.3);
+}
+
+.btn-calculate:active {
+  transform: translateY(0);
+}
+
+/* ---------- Results ---------- */
+.results-panel {
+  display: none;
+  /* shown by JS */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--clr-border);
+}
+
+.results-panel.visible {
+  display: grid;
+}
+
+.result-item {
+  background: var(--clr-bg);
+  border-radius: var(--radius-sm);
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.result-item.accent {
+  background: var(--clr-primary-light);
+}
+
+.result-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--clr-text-light);
+  margin-bottom: 6px;
+}
+
+.result-value {
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--clr-text);
+}
+
+.result-item.accent .result-value {
+  color: var(--clr-primary-dark);
+}
+
+/* ---------- Cars Section ---------- */
+.cars-section {
+  padding: 40px 0 48px;
+  display: none;
+  /* shown by JS */
+}
+
+.cars-section.visible {
+  display: block;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.section-sub {
+  text-align: center;
+  color: var(--clr-text-light);
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+}
+
+.cars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.car-card {
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 14px var(--clr-shadow);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.car-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+}
+
+.car-card-img {
+  width: 100%;
+  height: 180px;
+  background: var(--clr-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.car-card-img .car-icon {
+  font-size: 3rem;
+  color: var(--clr-text-light);
+  opacity: 0.5;
+}
+
+.car-card-img .car-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--clr-accent);
+  color: var(--clr-white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.car-card-body {
+  padding: 18px 16px 20px;
+}
+
+.car-card-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.car-card-price {
+  font-size: 0.88rem;
+  color: var(--clr-text-light);
+  margin-bottom: 12px;
+}
+
+.car-card-emi {
+  display: inline-block;
+  background: var(--clr-primary-light);
+  color: var(--clr-primary-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* ---------- How Section ---------- */
+.how-section {
+  padding: 40px 0 56px;
+}
+
+.steps-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 8px;
+}
+
+.step-card {
+  text-align: center;
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  padding: 28px 20px 24px;
+  box-shadow: 0 2px 14px var(--clr-shadow);
+}
+
+.step-icon {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 14px;
+  background: linear-gradient(135deg, var(--clr-primary) 0%, #009089 100%);
+  color: var(--clr-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.step-card h3 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.step-card p {
+  font-size: 0.88rem;
+  color: var(--clr-text-light);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--clr-white);
+  border-top: 1px solid var(--clr-border);
+  padding: 18px 0;
+}
+
+.footer-inner {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--clr-text-light);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .results-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .cars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .steps-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .calc-card {
+    padding: 24px 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-nav {
+    gap: 14px;
+  }
+
+  .header-nav a {
+    font-size: 0.82rem;
+  }
+}
