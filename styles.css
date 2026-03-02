@@ -1,32 +1,31 @@
-/* ========================================================
-   OpenSooq Car Loan Calculator – Styles
-   ======================================================== */
+/* styles.css */
 
-/* ---------- Reset & Base ---------- */
-*,
-*::before,
-*::after {
+/* === 1. CSS Variables & Reset === */
+:root {
+  --primary: #2853a2;
+  --primary-dark: #1e3f7a;
+  --accent: #75c044;
+  --accent-dark: #5ea033;
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --text: #1a1a2e;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --error: #dc2626;
+  --amber: #d97706;
+  --green: #16a34a;
+  --red: #dc2626;
+  --radius-card: 12px;
+  --radius-btn: 8px;
+  --radius-input: 8px;
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --font: 'Segoe UI', Arial, sans-serif;
+}
+
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-:root {
-  --clr-primary: #00b0a8;
-  --clr-primary-dark: #009089;
-  --clr-primary-light: #e0f7f5;
-  --clr-accent: #ff6f3c;
-  --clr-bg: #f5f7fa;
-  --clr-white: #ffffff;
-  --clr-text: #2c3e50;
-  --clr-text-light: #6b7c93;
-  --clr-border: #e2e8f0;
-  --clr-shadow: rgba(0, 0, 0, 0.06);
-  --radius: 14px;
-  --radius-sm: 8px;
-  --transition: 0.25s ease;
-  --max-width: 1080px;
-  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 html {
@@ -35,404 +34,497 @@ html {
 
 body {
   font-family: var(--font);
-  background: var(--clr-bg);
-  color: var(--clr-text);
+  background: var(--bg);
+  color: var(--text);
   line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
-.container {
-  width: 92%;
-  max-width: var(--max-width);
-  margin: 0 auto;
+/* === 2. Typography === */
+h1, h2, h3 {
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
 }
 
-/* ---------- Header ---------- */
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.35rem; margin-bottom: 1.25rem; }
+
+p { color: var(--muted); }
+
+label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+
+/* === 3. Header === */
 .site-header {
-  background: var(--clr-white);
-  border-bottom: 1px solid var(--clr-border);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
 .header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.85rem 1.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 60px;
+  gap: 1rem;
 }
 
 .logo {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--clr-text);
-  letter-spacing: -0.5px;
-}
-
-.logo span {
-  color: var(--clr-primary);
-}
-
-.header-nav {
-  display: flex;
-  gap: 22px;
-}
-
-.header-nav a {
-  text-decoration: none;
-  color: var(--clr-text-light);
-  font-size: 0.92rem;
-  font-weight: 500;
-  transition: color var(--transition);
-}
-
-.header-nav a:hover {
-  color: var(--clr-primary);
-}
-
-/* ---------- Hero ---------- */
-.hero {
-  background: linear-gradient(135deg, var(--clr-primary) 0%, #007e78 100%);
-  color: var(--clr-white);
-  padding: 52px 0 48px;
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  margin-bottom: 10px;
-  letter-spacing: -0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.hero-sub {
-  font-size: 1.05rem;
-  opacity: 0.9;
-  max-width: 540px;
+.logo-open  { color: var(--primary); }
+.logo-sooq  { color: var(--accent); }
+
+.search-wrap {
+  flex: 1;
+  position: relative;
+  max-width: 480px;
   margin: 0 auto;
 }
 
-/* ---------- Calculator ---------- */
-.calculator-section {
-  padding: 48px 0 32px;
+.search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  color: var(--muted);
+  pointer-events: none;
 }
 
-.calc-card {
-  background: var(--clr-white);
-  border-radius: var(--radius);
-  box-shadow: 0 4px 24px var(--clr-shadow);
-  padding: 36px 32px 32px;
+.search-input {
+  width: 100%;
+  padding: 0.55rem 0.75rem 0.55rem 2.25rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-input);
+  font-size: 0.9rem;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
 }
 
-.calc-card h2 {
-  font-size: 1.25rem;
-  margin-bottom: 24px;
-  color: var(--clr-text);
+.search-input:focus {
+  border-color: var(--primary);
 }
 
-.form-grid {
+.btn-add-listing {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-btn);
+  font-weight: 700;
+  font-size: 0.875rem;
+  font-family: var(--font);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.btn-add-listing:hover {
+  background: var(--accent-dark);
+}
+
+/* === 4. Calculator Section === */
+#calculator-section {
+  padding: 2.5rem 1.5rem;
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.calc-heading {
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+.calc-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 1.5rem;
+  align-items: start;
 }
 
-.field label {
-  display: block;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--clr-text-light);
-  margin-bottom: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 1.75rem;
 }
 
-.field input {
+.field-group {
+  margin-bottom: 1.1rem;
+}
+
+.field-group input,
+.field-group select {
   width: 100%;
-  padding: 12px 14px;
-  border: 1.5px solid var(--clr-border);
-  border-radius: var(--radius-sm);
-  font-size: 1rem;
-  color: var(--clr-text);
-  background: var(--clr-bg);
-  transition: border-color var(--transition), box-shadow var(--transition);
+  padding: 0.6rem 0.85rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-input);
+  font-size: 0.95rem;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--surface);
   outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: auto;
 }
 
-.field input::placeholder {
-  color: #b0bec5;
+.field-group input:focus,
+.field-group select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(40, 83, 162, 0.12);
 }
 
-.field input:focus {
-  border-color: var(--clr-primary);
-  box-shadow: 0 0 0 3px rgba(0, 176, 168, 0.15);
+.field-group input.invalid,
+.field-group select.invalid {
+  border-color: var(--error);
 }
 
-.field.error input {
-  border-color: #e74c3c;
-}
-
-.btn-calculate {
+.field-error {
   display: block;
-  width: 100%;
-  margin-top: 28px;
-  padding: 14px;
-  background: linear-gradient(135deg, var(--clr-primary) 0%, #009089 100%);
-  color: var(--clr-white);
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--error);
+  margin-top: 0.25rem;
+  min-height: 1rem;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
   border: none;
-  border-radius: var(--radius-sm);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-btn);
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font);
   cursor: pointer;
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition: background 0.2s, transform 0.1s;
 }
 
-.btn-calculate:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 176, 168, 0.3);
+.btn-primary:hover {
+  background: var(--primary-dark);
 }
 
-.btn-calculate:active {
-  transform: translateY(0);
+.btn-primary:active {
+  transform: scale(0.98);
 }
 
-/* ---------- Results ---------- */
-.results-panel {
-  display: none;
-  /* shown by JS */
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 32px;
-  padding-top: 28px;
-  border-top: 1px solid var(--clr-border);
+.btn-full {
+  width: 100%;
+  margin-top: 0.5rem;
 }
 
-.results-panel.visible {
-  display: grid;
+/* === 5. Results Card === */
+.calc-results {
+  min-height: 320px;
+  display: flex;
+  align-items: stretch;
 }
 
-.result-item {
-  background: var(--clr-bg);
-  border-radius: var(--radius-sm);
-  padding: 20px 16px;
+.results-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 2rem;
 }
 
-.result-item.accent {
-  background: var(--clr-primary-light);
+.placeholder-icon {
+  font-size: 2.5rem;
+  opacity: 0.4;
+}
+
+.results-placeholder p {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.results-content {
+  width: 100%;
+}
+
+.result-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1.25rem;
 }
 
 .result-label {
-  display: block;
-  font-size: 0.78rem;
+  font-size: 0.875rem;
+  color: var(--muted);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
-  color: var(--clr-text-light);
-  margin-bottom: 6px;
+  letter-spacing: 0.04em;
 }
 
-.result-value {
-  display: block;
-  font-size: 1.35rem;
+.result-amount {
+  font-size: 2rem;
   font-weight: 800;
-  color: var(--clr-text);
+  color: var(--primary);
+  letter-spacing: -0.5px;
 }
 
-.result-item.accent .result-value {
-  color: var(--clr-primary-dark);
+.result-divider {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 1.1rem;
 }
 
-/* ---------- Cars Section ---------- */
-.cars-section {
-  padding: 40px 0 48px;
-  display: none;
-  /* shown by JS */
+.result-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
 }
 
-.cars-section.visible {
-  display: block;
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
 }
 
-.section-title {
-  text-align: center;
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 6px;
+.result-row span:first-child {
+  color: var(--muted);
 }
 
-.section-sub {
-  text-align: center;
-  color: var(--clr-text-light);
-  font-size: 0.95rem;
-  margin-bottom: 28px;
+.result-row span:last-child {
+  font-weight: 600;
+  color: var(--text);
 }
 
-.cars-grid {
+.disclaimer {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* === 6. Content Section === */
+#content-section {
+  padding: 2.5rem 1.5rem;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.content-placeholder {
+  height: 120px;
+  border-radius: 8px;
+  background: var(--bg);
+  margin-bottom: 2rem;
+  border: 1.5px dashed var(--border);
+}
+
+/* === 7. Car Listings Grid === */
+#listings-section {
+  padding: 2.5rem 1.5rem;
+}
+
+.listings-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
 }
 
 .car-card {
-  background: var(--clr-white);
-  border-radius: var(--radius);
-  box-shadow: 0 2px 14px var(--clr-shadow);
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
   overflow: hidden;
-  transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .car-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
-.car-card-img {
+.car-card img {
   width: 100%;
-  height: 180px;
-  background: var(--clr-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.car-card-img .car-icon {
-  font-size: 3rem;
-  color: var(--clr-text-light);
-  opacity: 0.5;
-}
-
-.car-card-img .car-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: var(--clr-accent);
-  color: var(--clr-white);
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 20px;
-  text-transform: uppercase;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  background: var(--bg);
 }
 
 .car-card-body {
-  padding: 18px 16px 20px;
-}
-
-.car-card-name {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.car-card-price {
-  font-size: 0.88rem;
-  color: var(--clr-text-light);
-  margin-bottom: 12px;
-}
-
-.car-card-emi {
-  display: inline-block;
-  background: var(--clr-primary-light);
-  color: var(--clr-primary-dark);
-  font-size: 0.85rem;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 20px;
-}
-
-/* ---------- How Section ---------- */
-.how-section {
-  padding: 40px 0 56px;
-}
-
-.steps-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  margin-top: 8px;
-}
-
-.step-card {
-  text-align: center;
-  background: var(--clr-white);
-  border-radius: var(--radius);
-  padding: 28px 20px 24px;
-  box-shadow: 0 2px 14px var(--clr-shadow);
-}
-
-.step-icon {
-  width: 44px;
-  height: 44px;
-  margin: 0 auto 14px;
-  background: linear-gradient(135deg, var(--clr-primary) 0%, #009089 100%);
-  color: var(--clr-white);
-  border-radius: 50%;
+  padding: 1rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.car-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.car-price {
+  font-size: 1.05rem;
   font-weight: 800;
+  color: var(--primary);
 }
 
-.step-card h3 {
-  font-size: 1rem;
-  margin-bottom: 6px;
+.car-monthly-badge {
+  display: inline-block;
+  background: rgba(117, 192, 68, 0.15);
+  color: var(--accent-dark);
+  border: 1px solid rgba(117, 192, 68, 0.4);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 20px;
+  width: fit-content;
 }
 
-.step-card p {
-  font-size: 0.88rem;
-  color: var(--clr-text-light);
+.btn-outline {
+  margin-top: auto;
+  background: transparent;
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-btn);
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  width: 100%;
 }
 
-/* ---------- Footer ---------- */
+.btn-outline:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* === 8. Footer === */
 .site-footer {
-  background: var(--clr-white);
-  border-top: 1px solid var(--clr-border);
-  padding: 18px 0;
-}
-
-.footer-inner {
+  border-top: 3px solid var(--primary);
+  padding: 1.5rem;
   text-align: center;
-  font-size: 0.82rem;
-  color: var(--clr-text-light);
 }
 
-/* ---------- Responsive ---------- */
+.site-footer p {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* === 9. Utilities & Badges === */
+.afford-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.afford-badge.affordable {
+  background: rgba(22, 163, 74, 0.12);
+  color: var(--green);
+  border: 1px solid rgba(22, 163, 74, 0.35);
+}
+
+.afford-badge.moderate {
+  background: rgba(217, 119, 6, 0.12);
+  color: var(--amber);
+  border: 1px solid rgba(217, 119, 6, 0.35);
+}
+
+.afford-badge.high-risk {
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--red);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+/* === 10. Responsive Breakpoints === */
+@media (max-width: 992px) {
+  .listings-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
-  .form-grid {
+  .calc-grid {
     grid-template-columns: 1fr;
   }
 
-  .results-panel {
-    grid-template-columns: 1fr;
+  .calc-results {
+    min-height: unset;
   }
 
-  .cars-grid {
-    grid-template-columns: 1fr;
+  .header-inner {
+    flex-wrap: wrap;
+    gap: 0.75rem;
   }
 
-  .steps-row {
-    grid-template-columns: 1fr;
+  .search-wrap {
+    order: 3;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
   }
 
-  .hero h1 {
-    font-size: 1.6rem;
-  }
+  .logo { font-size: 1.25rem; }
 
-  .calc-card {
-    padding: 24px 18px;
-  }
+  h1 { font-size: 1.4rem; }
 }
 
 @media (max-width: 480px) {
-  .header-nav {
-    gap: 14px;
+  .listings-grid {
+    grid-template-columns: 1fr;
   }
 
-  .header-nav a {
-    font-size: 0.82rem;
+  .btn-add-listing {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.85rem;
+  }
+
+  #calculator-section,
+  #content-section,
+  #listings-section {
+    padding: 1.75rem 1rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .result-amount {
+    font-size: 1.6rem;
   }
 }
